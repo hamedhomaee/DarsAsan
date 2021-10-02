@@ -12,5 +12,19 @@ namespace DarsAsan.Data
             : base(options)
         {
         }
+
+        public DbSet<StudentUser> Students { get; set; }
+        public DbSet<TeacherUser> Teachers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<StudentUser>()
+                .HasBaseType<ApplicationUser>();
+
+            modelBuilder.Entity<TeacherUser>()
+                .HasBaseType<ApplicationUser>();
+        }
     }
 }
