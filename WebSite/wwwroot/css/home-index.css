@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "first-persian";
+  src: url("/fonts/noto/noto.ttf");
+}
+@media (min-width: 2200px) {
+  #sign-wrapper {
+    margin-top: 0.5rem;
+    border: 1px solid black;
+    padding: 1rem;
+  }
+
+  #signin-form {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+  }
+
+  #signup-form {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  #announcement {
+    border: 1px solid black;
+    padding: 1rem;
+    margin-top: 0.5rem;
+  }
+  #announcement h2 {
+    font-size: 1em;
+  }
+}
+body {
+  font-family: "first-persian";
+}
+
+#main-navbar {
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=home-index.css.map */

@@ -1,0 +1,65 @@
+@model DarsAsan.ViewModels.HomeIndex
+
+@section Styles {
+<link rel="stylesheet" href="/css/home-index.css">
+}
+
+<nav id="main-navbar" class="x2-mar-auto x2-wid-60">
+    <h2 class="x2-mar-right-auto">Logo</h2>
+</nav>
+
+<main id="main" class="x2-mar-auto x2-wid-60">
+    <div id="announcement">
+        <h2 class="x2-text-center">
+            با درس‌آسان به آسانی موفق شوید.
+        </h2>
+    </div>
+    <div id="sign-wrapper">
+        <div id="signin-form" class="x2-wid-50 x2-mar-left-auto">
+            <h3>ورود</h3>
+            <form asp-action="/signin" class="simple-form">
+                <div>
+                    @Html.DisplayNameFor(model => model.SignInUsername)
+                    <input asp-for="SignInUsername">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.SignInPassword)
+                    <input asp-for="SignInPassword">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.RememberMe)
+                    <input asp-for="RememberMe">
+                </div>
+            </form>
+        </div>
+        <div id="signup-form" class="x2-wid-50 x2-mar-right-auto">
+            <h3>ثبت نام</h3>
+            <form asp-action="/signup">
+                <div>
+                    @Html.DisplayNameFor(model => model.Username)
+                    <input asp-for="Username">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.Email)
+                    <input asp-for="Email">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.ConfirmEmail)
+                    <input asp-for="ConfirmEmail">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.Password)
+                    <input asp-for="Password">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                    <input asp-for="ConfirmPassword">
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.IsTeacher)
+                    <input asp-for="IsTeacher">
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
