@@ -1,11 +1,11 @@
-@model DarsAsan.ViewModels.HomeIndex
+@model DarsAsan.ViewModels.HomeIndexViewModel
 
 @section Styles {
 <link rel="stylesheet" href="/css/home-index.css">
 }
 
 <nav id="main-navbar" class="x2-mar-auto x2-wid-60">
-    <h2 class="x2-mar-right-auto">Logo</h2>
+    <h2 class="x2-mar-right-auto x2-wid-max-con">Logo</h2>
 </nav>
 
 <main id="main" class="x2-mar-auto x2-wid-60">
@@ -15,49 +15,73 @@
         </h2>
     </div>
     <div id="sign-wrapper">
-        <div id="signin-form" class="x2-wid-50 x2-mar-left-auto">
-            <h3>ورود</h3>
-            <form asp-action="/signin" class="simple-form">
-                <div>
-                    @Html.DisplayNameFor(model => model.SignInUsername)
-                    <input asp-for="SignInUsername">
+        <div id="signin-form" class="x2-wid-40 x2-mar-left-auto">
+            <h3 class="x2-text-center mar-bot-1rem">ورود</h3>
+            <form method="post" asp-action="/signin">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.In.SignInUsernameOrEmail)</div>
+                        <div><input asp-for="In.SignInUsernameOrEmail"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.SignInPassword)
-                    <input asp-for="SignInPassword">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.In.SignInPassword)</div>
+                        <div><input asp-for="In.SignInPassword"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.RememberMe)
-                    <input asp-for="RememberMe">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.In.RememberMe)</div>
+                        <div class="checkbox"><input asp-for="In.RememberMe"></div>
+                    </div>
+                </div>
+                <div class="x2-form-2-col">
+                    <button type="submit">ارسال</button>
                 </div>
             </form>
         </div>
-        <div id="signup-form" class="x2-wid-50 x2-mar-right-auto">
-            <h3>ثبت نام</h3>
-            <form asp-action="/signup">
-                <div>
-                    @Html.DisplayNameFor(model => model.Username)
-                    <input asp-for="Username">
+        <div id="signup-form" class="x2-wid-40 x2-mar-right-auto">
+            <h3 class="x2-text-center mar-bot-1rem">ثبت نام</h3>
+            <form method="post" asp-action="/signup">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.Username)</div>
+                        <div><input asp-for="Up.Username"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.Email)
-                    <input asp-for="Email">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.Email)</div>
+                        <div><input asp-for="Up.Email"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.ConfirmEmail)
-                    <input asp-for="ConfirmEmail">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.ConfirmEmail)</div>
+                        <div><input asp-for="Up.ConfirmEmail"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.Password)
-                    <input asp-for="Password">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.Password)</div>
+                        <div><input asp-for="Up.Password"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.ConfirmPassword)
-                    <input asp-for="ConfirmPassword">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.ConfirmPassword)</div>
+                        <div><input asp-for="Up.ConfirmPassword"></div>
+                    </div>
                 </div>
-                <div>
-                    @Html.DisplayNameFor(model => model.IsTeacher)
-                    <input asp-for="IsTeacher">
+                <div class="x2-form-2-col">
+                    <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.IsTeacher)</div>
+                        <div class="checkbox"><input asp-for="Up.IsTeacher"></div>
+                    </div>
+                </div>
+                <div class="x2-form-2-col">
+                    <button type="submit">ارسال</button>
                 </div>
             </form>
         </div>

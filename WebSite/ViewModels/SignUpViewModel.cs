@@ -2,13 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DarsAsan.ViewModels
 {
-    public class HomeIndex
+    public class SignUpViewModel
     {
-        [Required]
-        [StringLength(30)]
-        [Display(Name = "نام کاربری")]
-        public string SignInUsername { get; set; }
-
         [Required]
         [StringLength(30)]
         [Display(Name = "نام کاربری")]
@@ -24,17 +19,16 @@ namespace DarsAsan.ViewModels
         [Compare("Email", ErrorMessage = "ایمیل همسان نیست")]
         public string ConfirmEmail { get; set; }
 
-        [Required]
-        [StringLength(30)]
-        [DataType(DataType.Password)]
-        [Display(Name = "رمز عبور")]
-        public string Password { get; set; }
+        [Phone]
+        [Display(Name = "شماره موبایل (اختیاری)")]
+        [MaxLength(12)]
+        public int MyProperty { get; set; }
 
         [Required]
         [StringLength(30)]
         [DataType(DataType.Password)]
         [Display(Name = "رمز عبور")]
-        public string SignInPassword { get; set; }
+        public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [StringLength(30)]
@@ -44,8 +38,5 @@ namespace DarsAsan.ViewModels
 
         [Display(Name = "معلم هستم")]
         public bool IsTeacher { get; set; }
-
-        [Display(Name = "مرا به خاطر بسپار؟")]
-        public bool RememberMe { get; set; }
     }
 }

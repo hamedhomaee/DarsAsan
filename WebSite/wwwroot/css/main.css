@@ -1,5 +1,5 @@
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, input,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -48,12 +48,22 @@ table {
 }
 
 @media (min-width: 480px) {
-  .s1-dis-flex {
+  .s1-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .s1-wid-max-cont {
+  .s1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s1-wid-max-con {
     width: max-content;
+  }
+
+  .s1-wid-40 {
+    width: 40%;
   }
 
   .s1-wid-50 {
@@ -66,12 +76,10 @@ table {
 
   .s1-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   s1-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .s1-mar-auto {
@@ -81,14 +89,63 @@ table {
   .s1-text-center {
     text-align: center;
   }
+
+  .s1-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .s1-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .s1-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .s1-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .s1-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .s1-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .s1-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .s1-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 540px) {
-  .s2-dis-flex {
+  .s2-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .s2-wid-max-cont {
+  .s2-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s2-wid-max-con {
     width: max-content;
+  }
+
+  .s2-wid-40 {
+    width: 40%;
   }
 
   .s2-wid-50 {
@@ -101,12 +158,10 @@ table {
 
   .s2-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   s2-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .s2-mar-auto {
@@ -116,14 +171,63 @@ table {
   .s2-text-center {
     text-align: center;
   }
+
+  .s2-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .s2-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .s2-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .s2-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .s2-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .s2-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .s2-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .s2-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 720px) {
-  .m1-dis-flex {
+  .m1-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .m1-wid-max-cont {
+  .m1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .m1-wid-max-con {
     width: max-content;
+  }
+
+  .m1-wid-40 {
+    width: 40%;
   }
 
   .m1-wid-50 {
@@ -136,12 +240,10 @@ table {
 
   .m1-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   m1-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .m1-mar-auto {
@@ -151,14 +253,63 @@ table {
   .m1-text-center {
     text-align: center;
   }
+
+  .m1-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .m1-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .m1-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .m1-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .m1-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .m1-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .m1-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .m1-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 960px) {
-  .m2-dis-flex {
+  .m2-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .m2-wid-max-cont {
+  .m1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .m2-wid-max-con {
     width: max-content;
+  }
+
+  .m2-wid-40 {
+    width: 40%;
   }
 
   .m2-wid-50 {
@@ -171,12 +322,10 @@ table {
 
   .m2-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   m2-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .m2-mar-auto {
@@ -186,14 +335,63 @@ table {
   .m2-text-center {
     text-align: center;
   }
+
+  .m2-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .m2-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .m2-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .m2-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .m2-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .m2-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .m2-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .m2-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 1200px) {
-  .l1-dis-flex {
+  .l1-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .l1-wid-max-cont {
+  .l1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .l1-wid-max-con {
     width: max-content;
+  }
+
+  .l1-wid-40 {
+    width: 40%;
   }
 
   .l1-wid-50 {
@@ -206,12 +404,10 @@ table {
 
   .l1-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   l1-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .l1-mar-auto {
@@ -221,14 +417,63 @@ table {
   .l1-text-center {
     text-align: center;
   }
+
+  .l1-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .l1-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .l1-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .l1-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .l1-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .l1-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .l1-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .l1-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 1400px) {
-  .l2-dis-flex {
+  .l2-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .l2-wid-max-cont {
+  .l1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .l2-wid-max-con {
     width: max-content;
+  }
+
+  .l2-wid-40 {
+    width: 40%;
   }
 
   .l2-wid-50 {
@@ -241,12 +486,10 @@ table {
 
   .l2-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   l2-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .l2-mar-auto {
@@ -256,14 +499,63 @@ table {
   .l2-text-center {
     text-align: center;
   }
+
+  .l2-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .l2-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .l2-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .l2-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .l2-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .l2-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .l2-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .l2-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 1800px) {
-  .x1-dis-flex {
+  .x1-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .x1-wid-max-cont {
+  .x1-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .x1-wid-max-con {
     width: max-content;
+  }
+
+  .x1-wid-40 {
+    width: 40%;
   }
 
   .x1-wid-50 {
@@ -276,12 +568,10 @@ table {
 
   .x1-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   x1-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .x1-mar-auto {
@@ -291,14 +581,63 @@ table {
   .x1-text-center {
     text-align: center;
   }
+
+  .x1-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .x1-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .x1-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .x1-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .x1-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .x1-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .x1-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .x1-form-2-col div input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
 }
 @media (min-width: 2200px) {
-  .x2-dis-flex {
+  .x2-dis-flex-row {
     display: flex;
+    flex-direction: row;
   }
 
-  .x2-wid-max-cont {
+  .x2-dis-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .x2-wid-max-con {
     width: max-content;
+  }
+
+  .x2-wid-40 {
+    width: 40%;
   }
 
   .x2-wid-50 {
@@ -311,12 +650,10 @@ table {
 
   .x2-mar-right-auto {
     margin-right: auto;
-    width: max-content;
   }
 
   .x2-mar-left-auto {
     margin-left: auto;
-    width: max-content;
   }
 
   .x2-mar-auto {
@@ -325,6 +662,54 @@ table {
 
   .x2-text-center {
     text-align: center;
+  }
+
+  .x2-form-2-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .x2-form-2-col div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .x2-form-2-col div div {
+    margin: 0.5rem 0;
+  }
+  .x2-form-2-col div div:first-child {
+    width: max-content;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .x2-form-2-col div div:nth-child(2) {
+    width: 65%;
+  }
+  .x2-form-2-col div div:nth-child(2) input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  .x2-form-2-col div div.checkbox {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+  }
+  .x2-form-2-col div div.checkbox input {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+  }
+  .x2-form-2-col button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 1.2rem;
+    align-self: center;
+    width: 22%;
+    cursor: pointer;
   }
 }
 
