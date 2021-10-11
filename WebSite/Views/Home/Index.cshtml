@@ -23,11 +23,17 @@
                         <div>@Html.DisplayNameFor(model => model.In.SignInUsernameOrEmail)</div>
                         <div><input asp-for="In.SignInUsernameOrEmail"></div>
                     </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="In.SignInUsernameOrEmail"></span>
+                    </div>
                 </div>
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.In.SignInPassword)</div>
                         <div><input asp-for="In.SignInPassword"></div>
+                    </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="In.SignInPassword"></span>
                     </div>
                 </div>
                 <div class="x2-form-2-col">
@@ -49,11 +55,17 @@
                         <div>@Html.DisplayNameFor(model => model.Up.Username)</div>
                         <div><input asp-for="Up.Username"></div>
                     </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="Up.Username"></span>
+                    </div>
                 </div>
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.Up.Email)</div>
                         <div><input asp-for="Up.Email"></div>
+                    </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="Up.Email"></span>
                     </div>
                 </div>
                 <div class="x2-form-2-col">
@@ -61,17 +73,26 @@
                         <div>@Html.DisplayNameFor(model => model.Up.ConfirmEmail)</div>
                         <div><input asp-for="Up.ConfirmEmail"></div>
                     </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="Up.ConfirmEmail"></span>
+                    </div>
                 </div>
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.Up.Password)</div>
                         <div><input asp-for="Up.Password"></div>
                     </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="Up.Password"></span>
+                    </div>
                 </div>
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.Up.ConfirmPassword)</div>
                         <div><input asp-for="Up.ConfirmPassword"></div>
+                    </div>
+                    <div class="x2-text-center validation x2-text-danger">
+                        <span asp-validation-for="Up.ConfirmPassword"></span>
                     </div>
                 </div>
                 <div class="x2-form-2-col">

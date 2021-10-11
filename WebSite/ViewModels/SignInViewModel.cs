@@ -4,12 +4,12 @@ namespace DarsAsan.ViewModels
 {
     public class SignInViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "نام کاربری باید پر شود")]
         [StringLength(30)]
         [Display(Name = "نام کاربری")]
         public string SignInUsernameOrEmail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "رمز عبور باید پر شود")]
         [StringLength(30)]
         [DataType(DataType.Password)]
         [Display(Name = "رمز عبور")]
