@@ -14,6 +14,7 @@ namespace DarsAsan.ViewModels
         [Display(Name = "آدرس ایمیل")]
         public string Email { get; set; }
 
+        [Required]
         [EmailAddress]
         [Display(Name = "تکرار آدرس ایمیل")]
         [Compare("Email", ErrorMessage = "ایمیل همسان نیست")]
@@ -21,8 +22,8 @@ namespace DarsAsan.ViewModels
 
         [Phone]
         [Display(Name = "شماره موبایل (اختیاری)")]
-        [MaxLength(12)]
-        public int MyProperty { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -30,6 +31,7 @@ namespace DarsAsan.ViewModels
         [Display(Name = "رمز عبور")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
         [StringLength(30)]
         [Compare("Password", ErrorMessage = "رمز عبور همسان نیست")]

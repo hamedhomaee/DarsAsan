@@ -23,7 +23,7 @@ namespace WebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(options =>
-                options.UseSqlServer(Configuration["SQLExpressConnectionString"]));
+                options.UseSqlServer(Configuration["SQLExpressConStr"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
                .AddEntityFrameworkStores<AppDbContext>();

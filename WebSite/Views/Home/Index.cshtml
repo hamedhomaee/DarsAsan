@@ -17,7 +17,7 @@
     <div id="sign-wrapper">
         <div id="signin-form" class="x2-wid-40 x2-mar-left-auto">
             <h3 class="x2-text-center mar-bot-1rem">ورود</h3>
-            <form method="post" asp-action="/signin">
+            <form method="post" asp-action="signin">
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.In.SignInUsernameOrEmail)</div>
@@ -43,7 +43,7 @@
         </div>
         <div id="signup-form" class="x2-wid-40 x2-mar-right-auto">
             <h3 class="x2-text-center mar-bot-1rem">ثبت نام</h3>
-            <form method="post" asp-action="/signup">
+            <form method="post" asp-action="signup">
                 <div class="x2-form-2-col">
                     <div>
                         <div>@Html.DisplayNameFor(model => model.Up.Username)</div>
@@ -76,6 +76,12 @@
                 </div>
                 <div class="x2-form-2-col">
                     <div>
+                        <div>@Html.DisplayNameFor(model => model.Up.PhoneNumber)</div>
+                        <div><input asp-for="Up.PhoneNumber"></div>
+                    </div>
+                </div>
+                <div class="x2-form-2-col">
+                    <div>
                         <div>@Html.DisplayNameFor(model => model.Up.IsTeacher)</div>
                         <div class="checkbox"><input asp-for="Up.IsTeacher"></div>
                     </div>
@@ -87,3 +93,9 @@
         </div>
     </div>
 </main>
+
+@section Scripts {
+<script src="js/jquery.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/jquery.validate.unobtrusive.js"></script>
+}

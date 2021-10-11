@@ -20,6 +20,12 @@ namespace DarsAsan.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(m => m.UserName).IsUnique(true);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(m => m.Email).IsUnique(true);
+
             modelBuilder.Entity<StudentUser>()
                 .HasBaseType<ApplicationUser>();
 
