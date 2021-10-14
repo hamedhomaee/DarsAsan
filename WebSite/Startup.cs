@@ -1,6 +1,7 @@
 using System;
 using DarsAsan.Data;
 using DarsAsan.Models;
+using DarsAsan.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -26,7 +27,8 @@ namespace WebSite
                 options.UseSqlServer(Configuration["SQLExpressConStr"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
-               .AddEntityFrameworkStores<AppDbContext>();
+               .AddEntityFrameworkStores<AppDbContext>()
+               .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -49,6 +51,8 @@ namespace WebSite
                 options.SignIn.RequireConfirmedEmail = true;
             });
 
+            services.AddTransient<IMailSender, MainMailSender>();
+
             services.AddControllersWithViews();
         }
 
@@ -68,6 +72,7 @@ namespace WebSite
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

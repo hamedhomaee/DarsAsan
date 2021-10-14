@@ -1,8 +1,11 @@
+using System.Text;
 using System.Threading.Tasks;
 using DarsAsan.Models;
+using DarsAsan.Utilities;
 using DarsAsan.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace DarsAsan.Controllers
 {
@@ -10,11 +13,13 @@ namespace DarsAsan.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IMailSender _mailSender;
 
-        public Home(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public Home(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMailSender mailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _mailSender = mailSender;
         }
 
         public IActionResult Index()
@@ -27,45 +32,41 @@ namespace DarsAsan.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Index", new HomeIndexViewModel() { Up = model });
             }
 
-            if (model.IsTeacher == true)
+            ApplicationUser NewUser = model.IsTeacher ?
+            new TeacherUser()
             {
-                ApplicationUser NewUser = new TeacherUser()
-                {
-                    UserName = model.Username,
-                    Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
-                };
-
-                var Result = await _userManager.CreateAsync(NewUser, model.Password);
-
-                if (Result.Succeeded)
-                {
-                    return View("SignUpSuccess");
-                }
-
-                return View(model);
-            }
-            else
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber
+            } :
+            new TeacherUser()
             {
-                ApplicationUser NewUser = new StudentUser()
-                {
-                    UserName = model.Username,
-                    Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
-                };
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber
+            };
 
-                var Result = await _userManager.CreateAsync(NewUser, model.Password);
+            var Result = await _userManager.CreateAsync(NewUser, model.Password);
 
-                if (Result.Succeeded)
-                {
-                    return View("SignUpSuccess");
-                }
+            if (Result.Succeeded)
+            {
+                string Token = await _userManager.GenerateEmailConfirmationTokenAsync(NewUser);
+                Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(Token));
 
-                return View(model);
+                string ConfirmEmailUrl = Url.ActionLink("ConfirmEmail", values: new { userId = NewUser.Id, token = Token });
+
+                string MailBody = "<h2 style='margin: 0 auto;'>Please Confirm Your Email</h2><br><a href='" + ConfirmEmailUrl + "'>Confirm Your Email</a></br>";
+
+                MailSender.Program.SendMail("hamedhomaee1990@gmail.com", model.Email, "smtp.gmail.com", 587, MailBody, "Hamed Test Confirm Your Email", true, "hamedhomaee1990@gmail.com", "noonecanknow", true);
+
+                return View("SignUpSuccess");
+
             }
+
+            return View("Index", new HomeIndexViewModel() { Up = model });
         }
 
         [HttpPost]

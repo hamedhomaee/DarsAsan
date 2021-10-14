@@ -10,11 +10,10 @@ namespace DarsAsan.ViewModels
         public string Username { get; set; }
 
         [Required(ErrorMessage = "آدرس ایمیل باید پر شود")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "آدرس ایمیل اشتباه است")]
         [Display(Name = "آدرس ایمیل")]
         public string Email { get; set; }
 
-        [EmailAddress]
         [Display(Name = "تکرار آدرس ایمیل")]
         [Compare("Email", ErrorMessage = "ایمیل همسان نیست")]
         public string ConfirmEmail { get; set; }
