@@ -62,7 +62,7 @@ namespace DarsAsan.Controllers
 
                 string MailBody = "<h2 dir='rtl' style='margin: 0 auto;'>لطفا با کلیک بر روی لینک زیر ثبت‌نام خود را تایید کنید.</h2><br><a href='" + ConfirmEmailUrl + "'>Confirm Your Email</a></br>";
 
-                MailSender.Program.SendMail("hamedhomaee1990@gmail.com", model.Email, "smtp.gmail.com", 587, MailBody, "Hamed Test Confirm Your Email", true, "hamedhomaee1990@gmail.com", "uknown", true);
+                MailSender.Program.SendMail("hamedhomaee1990@gmail.com", model.Email, "smtp.gmail.com", 587, MailBody, "Hamed Test Confirm Your Email", true, "uknown", true);
 
                 return View("SignUpSuccess");
 

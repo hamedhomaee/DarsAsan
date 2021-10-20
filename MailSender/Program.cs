@@ -7,7 +7,7 @@ namespace DarsAsan.MailSender
 {
     public class Program
     {
-        public static void SendMail(string From, string To, string SmtpServer, int SmtpPort, string MailBody, string Subject, bool IsBodyHtml, string SenderEmail, string SenderPassword, bool IsSSLEnabled)
+        public static void SendMail(string From, string To, string SmtpServer, int SmtpPort, string MailBody, string Subject, bool IsBodyHtml, string SenderPassword, bool IsSSLEnabled)
         {
             MailMessage TheMessage = new MailMessage(From, To);
 
@@ -18,7 +18,7 @@ namespace DarsAsan.MailSender
 
             SmtpClient client = new SmtpClient(SmtpServer, SmtpPort);
 
-            NetworkCredential BasicCredential = new NetworkCredential(SenderEmail, SenderPassword);
+            NetworkCredential BasicCredential = new NetworkCredential(From, SenderPassword);
 
             client.EnableSsl = IsSSLEnabled;
 
