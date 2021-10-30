@@ -6,5 +6,8 @@ namespace DarsAsan.ViewModels
     {
         public SignInViewModel In { get; set; }
         public SignUpViewModel Up { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string ForgotPasswordEmail { get; set; }
     }
 }

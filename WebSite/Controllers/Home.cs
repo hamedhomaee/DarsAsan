@@ -28,7 +28,7 @@ namespace DarsAsan.Controllers
             return View();
         }
 
-        [Route("signup")]
+        [Route("sign-up")]
         [HttpPost]
         public async Task<IActionResult> SignUpAsync([FromForm][Bind(Prefix = "Up")] SignUpViewModel model)
         {
@@ -71,7 +71,7 @@ namespace DarsAsan.Controllers
             return View("Index", new HomeIndexViewModel() { Up = model });
         }
 
-        [Route("signin")]
+        [Route("sign-in")]
         [HttpPost]
         public async Task<IActionResult> SignInAsync([FromForm][Bind(Prefix = "In")] SignInViewModel model)
         {
@@ -134,6 +134,72 @@ namespace DarsAsan.Controllers
             }
 
             ViewData["success"] = "your email is successfully confirmed.";
+            return RedirectToAction("Index");
+        }
+
+        [Route("forgot-password")]
+        [HttpPost]
+        public async Task<IActionResult> ForgotPasswordAsync([FromForm][Bind] string email)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser TheUser = await _userManager.FindByEmailAsync(email);
+
+                if (TheUser != null && await _userManager.IsEmailConfirmedAsync(TheUser))
+                {
+                    var Token = await _userManager.GeneratePasswordResetTokenAsync(TheUser);
+
+                    Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(Token));
+
+                    string ResetPasswordUrl = Url.ActionLink("ResetPassword", values: new { email = TheUser.Email, token = Token }, protocol: Request.Scheme);
+
+                    string MailBody = "<h2 dir='rtl' style='margin: 0 auto;'>لطفا برای بازیابی کلمه عبور بر روی لینک زیر کلیک کنید.</h2><br><a href='" + ResetPasswordUrl + "'>بازیابی رمز عبور</a></br>";
+
+                    MailSender.Program.SendMail("hamedhomaee1990@gmail.com", TheUser.Email, "smtp.gmail.com", 587, MailBody, "Hamed Test Confirm Your Email", true, "uknown", true);
+
+                    return View();
+                }
+                return View("");
+            }
+            return View("");
+        }
+
+        [Route("reset-password")]
+        public IActionResult ResetPassword([FromQuery] string userEmail, [FromQuery] string token)
+        {
+            if (string.IsNullOrWhiteSpace(userEmail) || string.IsNullOrWhiteSpace(token))
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+        [Route("confirm-reset-password")]
+        [HttpPost]
+        public async Task<IActionResult> ConfirmResetPasswordAsync([FromForm][Bind] ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid && !string.IsNullOrEmpty(model.Token))
+            {
+                ApplicationUser theUser = await _userManager.FindByEmailAsync(model.Email);
+
+                if (theUser != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(theUser, model.Token, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+
+            return View(model);
+        }
+
+        [Route("not-signed-in")]
+        public IActionResult NotSignedIn()
+        {
             return RedirectToAction("Index");
         }
     }

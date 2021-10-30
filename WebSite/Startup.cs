@@ -2,13 +2,17 @@ using System;
 using DarsAsan.Data;
 using DarsAsan.Models;
 using DarsAsan.Utilities;
+using JavaScriptEngineSwitcher.Core;
+using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using React.AspNet;
 
 namespace WebSite
 {
@@ -29,6 +33,17 @@ namespace WebSite
             services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
                .AddEntityFrameworkStores<AppDbContext>()
                .AddDefaultTokenProviders();
+
+            services.AddTransient<IMailSender, MainMailSender>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+            JsEngineSwitcher.Current.DefaultEngineName = V8JsEngine.EngineName;
+            JsEngineSwitcher.Current.EngineFactories.AddV8();
+
+            services.AddControllersWithViews();
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -46,14 +61,15 @@ namespace WebSite
 
                 // User settings.
                 options.User.AllowedUserNameCharacters =
-                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
                 options.SignIn.RequireConfirmedEmail = true;
             });
 
-            services.AddTransient<IMailSender, MainMailSender>();
-
-            services.AddControllersWithViews();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = new PathString("/not-signed-in");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,7 +83,15 @@ namespace WebSite
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
+
+            app.UseReact(config =>
+            {
+                config
+                    .AddScript("~/js/Main.jsx");
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();

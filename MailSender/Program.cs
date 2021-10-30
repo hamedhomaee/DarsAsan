@@ -25,15 +25,7 @@ namespace DarsAsan.MailSender
             client.UseDefaultCredentials = false;
             client.Credentials = BasicCredential;
 
-            try
-            {
-                client.Send(TheMessage);
-            }
-
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            client.Send(TheMessage);
         }
     }
 }

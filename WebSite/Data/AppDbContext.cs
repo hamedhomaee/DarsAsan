@@ -15,6 +15,7 @@ namespace DarsAsan.Data
 
         public DbSet<StudentUser> Students { get; set; }
         public DbSet<TeacherUser> Teachers { get; set; }
+        public DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
